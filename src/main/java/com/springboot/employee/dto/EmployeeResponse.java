@@ -1,6 +1,6 @@
 package com.springboot.employee.dto;
 
-import com.springboot.employee.entity.EmployeeDetails;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

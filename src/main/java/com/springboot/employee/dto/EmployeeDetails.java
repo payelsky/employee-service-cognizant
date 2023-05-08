@@ -1,4 +1,4 @@
-package com.springboot.employee.entity;
+package com.springboot.employee.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springboot.employee.dto.EmployeeDetails;
 import com.springboot.employee.dto.EmployeeResponse;
 import com.springboot.employee.entity.Employee;
 import com.springboot.employee.service.EmployeeService;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 @RestController
 @RequestMapping("/employee")
 public class EmployeeController {
+	private static String isActive="Y";
 	@Autowired
 	private EmployeeService empService;
 	
@@ -44,9 +46,15 @@ public class EmployeeController {
 		return null;
 		
 	}
+	
 	@GetMapping("/getDetails")
 	public List<EmployeeResponse> getEmployeeDetails(@RequestParam  String isActive){
 		System.out.println("isActive::::::::::::::"+isActive);
+		return  empService.getAllActiveEmployeesWithPromotion(isActive);
+		}
+	@GetMapping("/getDetailsWithoutPromotion")
+	public List<EmployeeDetails> getDetailsWithoutPromotion(){
+		
 		return  empService.getAllActiveEmployees(isActive);
 		}
 
