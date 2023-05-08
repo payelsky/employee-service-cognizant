@@ -73,8 +73,14 @@ public class EmployeeService {
 				  restTemplate.postForEntity("http://HCM-SERVICE/hcm/getDetails", request , EmployeeDetails[].class );
 
 				  List<EmployeeDetails> list = Arrays.asList(responses.getBody());
-				  System.out.println("list::::::::::::::"+list);
-		return null;
+				  HttpEntity<List<EmployeeDetails>> request2 = new HttpEntity<List<EmployeeDetails>>(list, 
+						    headers);
+				  
+				  ResponseEntity<EmployeeResponse[]> responses2 = 
+						  restTemplate.postForEntity("http://PROMOTION-SERVICE/promotion/checkEligibility", request2 , EmployeeResponse[].class );
+				  List<EmployeeResponse> empreslist = Arrays.asList(responses2.getBody());
+				  System.out.println("empreslist::::::::::::::"+empreslist);
+		return empreslist;
 	}
 
 }
